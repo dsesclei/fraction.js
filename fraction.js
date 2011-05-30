@@ -99,17 +99,22 @@ Fraction.prototype.toString = function(mixed)
 		var wholepart = Math.floor( this.numerator / this.denominator );
 		var numerator = this.numerator % this.denominator;
 		var denominator = this.denominator;
-		var result = [];
+		var result = String();
 
 		if ( wholepart !== 0 ) {
-			result.push( wholepart );
+			result = wholepart;
 		}
 
 		if ( numerator !== 0 ) {
-			result.push( numerator + '/' + denominator );
+			result += '\\frac{' + numerator + '}{' + denominator + '}';
 		}
 
-		return result.length > 0 ? result.join( ' ' ) : 0;
+		if ( this.numerator == 0 ) {
+			result = "0";
+		}
+
+		return result;
+
 	} else {
 		return this.numerator + '/' + this.denominator;
 	}
