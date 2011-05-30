@@ -252,9 +252,18 @@ Fraction.prototype.normalize = ( function()
 			var gcf = Fraction.gcf( this.numerator, this.denominator );
 			this.numerator /= gcf;
 			this.denominator /= gcf;
+
+			if ( this.denominator < 0 ) {
+				this.numerator *= -1;
+				this.denominator *= -1;
+			}
+
 			return this;
+
 		} else {
+
 			return this;
+
 		}
 	});
 
@@ -331,7 +340,7 @@ Fraction.compare = function( f_a, f_b ) {
 // http://www.btinternet.com/~se16/js/factor.htm
 Fraction.primeFactors = function( n ) 
 {
-	var num = n;
+	var num = Math.abs( n );
 	var factors = [];
 
 	// first potential prime factor
