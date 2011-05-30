@@ -116,7 +116,7 @@ Fraction.prototype.toString = function(mixed)
 		return result;
 
 	} else {
-		return this.numerator + '/' + this.denominator;
+		return '\\frac{' + this.numerator + '}{' + this.denominator + '}';
 	}
 };
 
